@@ -17,8 +17,7 @@ import Header from './Header/Header';
 import System from '../routes/System';
 
 import { CustomToastCloseButton } from '../components/CustomToast';
-import ConfirmModal from '../components/ConfirmModal';
-
+import HomPage from './HomePage/HomePage.js';
 class App extends Component {
 
     handlePersistorState = () => {
@@ -45,9 +44,9 @@ class App extends Component {
                 {/* mỗi lần refresh website mà vẫn muốn giữ data của màn hình đấy thì cần history(lưu lại lịch sử, đỡ phải gọi API nhiều lần) */}
                 <Router history={history}>
                     <div className="main-container">
-                        <ConfirmModal />
                         {/* props là để xem bạn đã đăng nhập chưa, nếu đăng nhập rồi thì render thêm header của ứng dụng */}
-                        {this.props.isLoggedIn && <Header />}
+                        {/* nếu đã đăng nhập thì render thêm header */}
+                        {this.props.isLoggedIn && <Header />} 
 
                         <span className="content-container">
                             <Switch>
@@ -55,6 +54,7 @@ class App extends Component {
                                 <Route path={path.HOME} exact component={(Home)} />
                                 <Route path={path.LOGIN} component={userIsNotAuthenticated(Login)} />
                                 <Route path={path.SYSTEM} component={userIsAuthenticated(System)} />
+                                <Route path={path.HOMEPAGE} component={HomPage} />
                             </Switch>
                         </span>
 

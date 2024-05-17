@@ -1,0 +1,161 @@
+.home-header-container {
+    height: 60px;
+    width: 100%;
+    padding: 0 20px;
+
+    .home-header-content {
+        width: 100%;
+        height: 100%;
+        display: flex;
+
+        .left-content {
+            width: 15%;
+            // border: 1px slateblue solid;
+            display: flex;
+            align-items: center;
+
+            .header-logo {
+                background: url('../../assets/soccer2.svg') center center no-repeat;
+                background-size: contain; // Add this line
+
+                height: 100%;
+                width: 100%;
+                cursor: pointer;
+
+            }
+
+            i {
+                cursor: pointer;
+                font-size: 25px;
+            }
+        }
+
+        .center-content {
+            width: 65%;
+            // border: 1px slateblue solid;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+
+        }
+
+        .right-content {
+            width: 15%;
+            // border: 1px slateblue solid;
+
+            display: flex;
+            justify-content: flex-end;
+            align-items: center;
+        }
+    }
+
+}
+
+.home-header-banner {
+    background: url('../../assets/bg5.jpg');
+    height: 800px ;
+    width: 1900px;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    display: flex;
+    flex-direction: column;
+    // align-items: flex-start;
+
+    .content-up {
+        // border: 1px solid red;
+        height: 80%;
+        padding-top: 15px;
+
+        .title1 {
+            text-align: center;
+            font-size: 30px;
+            text-shadow: 1px 1px 1px #333;
+            margin-bottom: 5px;
+            color: white;
+            // margin-top: 30px;
+            padding-top: 100px;
+        }
+
+        .title2 {
+            text-align: center;
+            font-size: 30px;
+            text-shadow: 1px 1px 1px #333;
+            color: white;
+            margin-bottom: 30px;
+        }
+
+        .search {
+            width: fit-content;
+            display: flex;
+            justify-self: center;
+            align-items: center;
+            margin: 0 auto;
+            padding: 10px;
+            border-radius: 25px;
+            background: #f7d800;
+
+            i {
+                margin: 0 5px;
+            }
+
+            input {
+                height: 30px;
+                width: 300px;
+                background: transparent;
+                border: none;
+                outline: none
+            }
+        }
+    }
+
+    .content-down {
+        // border: 1px solid green;
+        height: 20%;
+        padding: 0 50px;
+
+        display: flex;
+        align-items: flex-end;
+        justify-content: center;
+
+        background-image: linear-gradient(rgba(255,255,255,0), rgba(255,255,255,0.5), rgba(255,255,255,0.9));
+        .options {
+            text-align: center;
+            display: flex;
+            grid-gap: 50px;
+            justify-content: center;
+
+            .option-child {
+                width: 100px;
+                // border: 1px solid white;
+                .icon-child {
+                    background: white;
+                    width: 40px;
+                    height: 40px;
+                    padding: 10px;
+                    border-radius: 50%;
+                    text-align: center;
+                    margin: 0 auto;
+
+                    i {
+                        color: #49bce2;
+                        font-size: 20px;
+                    }
+                }
+
+                .text-child {
+                    font-size: 17px;
+                    font-weight: 500;
+                    cursor: pointer;
+                    // color: #49bce2;
+                    &:hover {
+                        color: #49bce2;
+                    }
+                }
+            }
+
+
+        }
+
+    }
+}
