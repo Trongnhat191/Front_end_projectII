@@ -1,3 +1,4 @@
 - File name:
 Specialty.js -> Field.js
+MedicalFacility.js -> Accessories.js
 - database:
