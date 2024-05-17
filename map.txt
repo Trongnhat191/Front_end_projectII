@@ -1,1 +1,3 @@
-Specilty -> Field
+- File name:
+Specialty.js -> Field.js
+- database:

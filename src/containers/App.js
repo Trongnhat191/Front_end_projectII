@@ -18,6 +18,8 @@ import System from '../routes/System';
 
 import { CustomToastCloseButton } from '../components/CustomToast';
 import HomPage from './HomePage/HomePage.js';
+
+import CustomScrollbars from '../components/CustomScrollbars';
 class App extends Component {
 
     handlePersistorState = () => {
@@ -46,17 +48,19 @@ class App extends Component {
                     <div className="main-container">
                         {/* props là để xem bạn đã đăng nhập chưa, nếu đăng nhập rồi thì render thêm header của ứng dụng */}
                         {/* nếu đã đăng nhập thì render thêm header */}
-                        {this.props.isLoggedIn && <Header />} 
+                        {this.props.isLoggedIn && <Header />}
 
-                        <span className="content-container">
-                            <Switch>
-                                {/* ở đây có 3 route, có hàm userIsAuthenticated là để xem đã đăng nhập chưa */}
-                                <Route path={path.HOME} exact component={(Home)} />
-                                <Route path={path.LOGIN} component={userIsNotAuthenticated(Login)} />
-                                <Route path={path.SYSTEM} component={userIsAuthenticated(System)} />
-                                <Route path={path.HOMEPAGE} component={HomPage} />
-                            </Switch>
-                        </span>
+                        <div className="content-container">
+                            <CustomScrollbars style = {{height: '100vh', width: '100%'}}>
+                                <Switch>
+                                    {/* ở đây có 3 route, có hàm userIsAuthenticated là để xem đã đăng nhập chưa */}
+                                    <Route path={path.HOME} exact component={(Home)} />
+                                    <Route path={path.LOGIN} component={userIsNotAuthenticated(Login)} />
+                                    <Route path={path.SYSTEM} component={userIsAuthenticated(System)} />
+                                    <Route path={path.HOMEPAGE} component={HomPage} />
+                                </Switch>
+                            </CustomScrollbars>
+                        </div>
 
                         <ToastContainer
                             className="toast-container" toastClassName="toast-item" bodyClassName="toast-item-body"

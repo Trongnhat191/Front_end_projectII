@@ -2,6 +2,7 @@ import { divide } from 'lodash';
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import HomeHeader from './HomeHeader';
+import Field from './Section/Field';
 
 class HomePage extends Component {
 
@@ -9,6 +10,8 @@ class HomePage extends Component {
         return (
             <div>
                 <HomeHeader />
+                <Field/>
+                <div style ={{height: '300px'}}></div>
             </div>
         );
     }
