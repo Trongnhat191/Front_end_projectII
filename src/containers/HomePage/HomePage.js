@@ -4,6 +4,7 @@ import { connect } from 'react-redux';
 import HomeHeader from './HomeHeader';
 import Field from './Section/Field';
 import Accessories from './Section/Accessories';
+import HandBook from './Section/HandBook';
 import './HomePage.scss';
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
@@ -25,6 +26,7 @@ class HomePage extends Component {
                 <HomeHeader />
                 <Field settings={settings} />
                 <Accessories settings={settings} />
+                <HandBook settings={settings} />
             </div>
         );
     }

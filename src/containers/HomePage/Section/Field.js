@@ -18,27 +18,27 @@ class Field extends Component {
                     <div className='section-body'>
                         <Slider {...this.props.settings}>
                             <div className='section-customize'>
-                                <div className='bg-image' />
+                                <div className='bg-image section-field' />
                                 <div>San 1</div>
                             </div>
                             <div className='section-customize'>
-                                <div className='bg-image' />
+                                <div className='bg-image section-field' />
                                 <div>San 1</div>
                             </div>
                             <div className='section-customize'>
-                                <div className='bg-image' />
+                                <div className='bg-image section-field' />
                                 <div>San 1</div>
                             </div>
                             <div className='section-customize'>
-                                <div className='bg-image' />
+                                <div className='bg-image section-field' />
                                 <div>San 1</div>
                             </div>
                             <div className='section-customize'>
-                                <div className='bg-image' />
+                                <div className='bg-image section-field' />
                                 <div>San 1</div>
                             </div>
                             <div className='section-customize'>
-                                <div className='bg-image' />
+                                <div className='bg-image section-field' />
                                 <div>San 1</div>
                             </div>
 

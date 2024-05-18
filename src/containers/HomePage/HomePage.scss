@@ -40,14 +40,24 @@
     .section-body {
         .section-customize {
             .bg-image {
-                height: 230px;
-                width: 400px;
-                background: url('../../assets/field/field1.jpg');
+                height: 250px;
+                width: 380px;
                 background-position: center center;
                 background-size: cover;
                 background-repeat: no-repeat;
                 background-color: #eee;
 
+                &.section-field{
+                    background: url('../../assets/field/field1.jpg');
+                }
+
+                &.section-accessories{
+                    background: url('../../assets/accessories/ball2.jpg');
+                }
+
+                &.section-handbook{
+                    background: url('../../assets/handbook/knuckleball.jpg');
+                }
             }
         }
     }

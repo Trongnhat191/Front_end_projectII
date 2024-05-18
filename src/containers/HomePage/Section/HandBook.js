@@ -1,45 +1,44 @@
 import { divide } from 'lodash';
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import './Accessories.scss';
-import { FormattedMessage } from 'react-intl';
 import Slider from 'react-slick';
+// import field1 from '../../../assets/handbook/ball1.jpg';
 
-class Accessories extends Component {
-
+class HandBook extends Component {
     render() {
+        
         return (
-            <div className='section-share section-accessories'>
+            <div className='section-share section-handbook'>
                 <div className='section-container'>
                     <div className='section-header'>
-                        <span className='title-section'>Phu kien ban chay</span>
+                        <span className='title-section'>Cam nang</span>
                         <button className='btn-section'>Xem them</button>
                     </div>
                     <div className='section-body'>
                         <Slider {...this.props.settings}>
                             <div className='section-customize'>
-                                <div className='bg-image section-accessories' />
-                                <div>Phu kien 1</div>
+                                <div className='bg-image section-handbook' />
+                                <div>San 1</div>
                             </div>
                             <div className='section-customize'>
-                                <div className='bg-image section-accessories' />
-                                <div>Phu kien 1</div>
+                                <div className='bg-image section-handbook' />
+                                <div>San 1</div>
                             </div>
                             <div className='section-customize'>
-                                <div className='bg-image section-accessories' />
-                                <div>Phu kien 1</div>
+                                <div className='bg-image section-handbook' />
+                                <div>San 1</div>
                             </div>
                             <div className='section-customize'>
-                                <div className='bg-image section-accessories' />
-                                <div>Phu kien 1</div>
+                                <div className='bg-image section-handbook' />
+                                <div>San 1</div>
                             </div>
                             <div className='section-customize'>
-                                <div className='bg-image section-accessories' />
-                                <div>Phu kien 1</div>
+                                <div className='bg-image section-handbook' />
+                                <div>San 1</div>
                             </div>
                             <div className='section-customize'>
-                                <div className='bg-image section-accessories' />
-                                <div>Phu kien 1</div>
+                                <div className='bg-image section-handbook' />
+                                <div>San 1</div>
                             </div>
 
                         </Slider>
@@ -63,4 +62,4 @@ const mapDispatchToProps = dispatch => {
     };
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(Accessories);
+export default connect(mapStateToProps, mapDispatchToProps)(HandBook);
