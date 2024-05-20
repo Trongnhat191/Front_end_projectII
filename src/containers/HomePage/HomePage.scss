@@ -37,11 +37,16 @@
         background: #f5f5f5;
     }
 
+    &.section-about{
+        // border: 1px solid red;
+        height: 500px !important;
+    }
+    
     .section-body {
         .section-customize {
             .bg-image {
-                height: 250px;
-                width: 380px;
+                height: 200px;
+                width: 360px;
                 background-position: center center;
                 background-size: cover;
                 background-repeat: no-repeat;
@@ -104,4 +109,39 @@
 
 }
 
+.home-footer{
+    text-align: center;
+    a{
+        text-decoration: unset;
+    }
+
+    
+}
+
+.section-about{
+    margin: 0 100px;
+
+    .section-about-header{
+        padding: 20px 10px;
+        font-size: 22px;
+        font-weight: 600;
+    }
+    .section-about-content{
+        display: flex;
+        gap: 15px;
+        width: 100%;
+        .content-left{
+            width: 60%;
+        }
+        .content-right{
+            width: 40%;
+
+            p{
+                text-align: justify;
+                font-style: italic;
+                padding-top: 15px;
+            }
+        }
+    }
+}
 //reset slick slider css
