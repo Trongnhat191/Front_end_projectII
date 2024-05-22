@@ -48,7 +48,7 @@ class App extends Component {
                     <div className="main-container">
                         {/* props là để xem bạn đã đăng nhập chưa, nếu đăng nhập rồi thì render thêm header của ứng dụng */}
                         {/* nếu đã đăng nhập thì render thêm header */}
-                        {this.props.isLoggedIn && <Header />}
+                        {/*this.props.isLoggedIn && <Header />*/}
 
                         <div className="content-container">
                             <CustomScrollbars style = {{height: '100vh', width: '100%'}}>
