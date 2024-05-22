@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { FormattedMessage } from 'react-intl';
 import { connect } from 'react-redux';
 import { getAllCodeService } from '../../../services/userService';
+import * as actions from '../../../store/actions';
 
 class UserRedux extends Component {
     constructor(props) {
@@ -12,23 +13,31 @@ class UserRedux extends Component {
     }
 
     async componentDidMount() {
-        try {
-            let res = await getAllCodeService('gender');
-            if (res && res.errCode === 0) {
-                this.setState({
-                    genderArr: res.data
-                })
-            }
-            console.log('check res from', res);
-        } catch (error) {
-            console.log(error);
-        }
+        this.props.getGenderStart();
+        // try {
+        //     let res = await getAllCodeService('gender');
+        //     if (res && res.errCode === 0) {
+        //         this.setState({
+        //             genderArr: res.data
+        //         })
+        //     }
+        //     console.log('check res from', res);
+        // } catch (error) {
+        //     console.log(error);
+        // }
     }
 
-
+    componentDidUpdate(prevProps, prevState, snapshot) {
+        if (prevProps.genderRedux !== this.props.genderRedux) {
+            this.setState({
+                genderArr: this.props.genderRedux
+            })
+        }
+    }
     render() {
         console.log('check state: ', this.state);
         let genders = this.state.genderArr;
+        console.log('check props from redux: ', this.props.genderRedux);
         return (
             <div>
                 <div className="user-redux-container" >
@@ -106,11 +115,15 @@ class UserRedux extends Component {
 
 const mapStateToProps = state => {
     return {
+        genderRedux: state.admin.genders,
     };
 };
 
 const mapDispatchToProps = dispatch => {
     return {
+        getGenderStart: () => dispatch(actions.fetchGenderStart()),
+        // processLogout: () => dispatch(actions.processLogout()),
+
     };
 };
 
