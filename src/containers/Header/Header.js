@@ -9,8 +9,8 @@ import './Header.scss';
 class Header extends Component {
 
     render() {
-        const { processLogout } = this.props;
-
+        const { processLogout, userInfo } = this.props;
+        console.log('check user info: ',userInfo);
         return (
             <div className="header-container">
                 {/* thanh navigator */}
@@ -30,7 +30,8 @@ class Header extends Component {
 
 const mapStateToProps = state => {
     return {
-        isLoggedIn: state.user.isLoggedIn
+        isLoggedIn: state.user.isLoggedIn,
+        userInfo: state.user.userInfo  ,
     };
 };
 

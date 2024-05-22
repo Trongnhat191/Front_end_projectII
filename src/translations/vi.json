@@ -37,6 +37,16 @@
             "system-parameter": {
                 "header": "Tham số hệ thống"
             }
+        },
+        "admin":{
+            "manage-user": "Người dùng",
+            "field": "Sân",
+            "manage-admin" : "Quản lý admin",
+            "crud": "CRUD user",
+            "crud-redux": "CRUD user redux",
+            "manage-field": "Quản lý sân",
+            "handbook": "Cẩm nang",
+            "manage-handbook": "Quản lý cẩm nang"
         }
     },
     "system": {
