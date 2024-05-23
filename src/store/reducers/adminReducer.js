@@ -1,35 +1,46 @@
+import { tail } from 'lodash';
 import actionTypes from '../actions/actionTypes';
 
 const initialState = {
-    genders:[],
-    roles:[],
+    isLoadingGender: false,
+    genders: [],
+    roles: [],
     positions: [],
 }
 
 const adminReducer = (state = initialState, action) => {
     switch (action.type) {
+        //GENDER
         case actionTypes.FETCH_GENDER_START:
-            console.log('nhat fetch gender start', action)
-            return {
-                ...state,
-
-            }
-        case actionTypes.FETCH_GENDER_SUCCESS:
-            let copyState = {...state};
-            copyState.genders = action.data;
-            console.log('nhat fetch gender success', copyState);
-
+            let copyState = { ...state };
+            state.isLoadingGender = true;
             return {
                 ...copyState,
-
             }
-        case actionTypes.FETCH_GENDER_FAILED:
-            console.log('nhat fetch gender failed', action)
-
+        case actionTypes.FETCH_GENDER_SUCCESS:
+            state.genders = action.data;
+            state.isLoadingGender = false;
             return {
                 ...state,
-
             }
+        case actionTypes.FETCH_GENDER_FAILED:
+            state.isLoadingGender = false;
+            state.genders = [];
+            return {
+                ...state,
+            }
+        //ROLE
+        case actionTypes.FETCH_ROLE_SUCCESS:
+            state.roles = action.data;
+            return {
+                ...state,
+            }
+        case actionTypes.FETCH_ROLE_FAILED:
+            state.roles = [];
+            return {
+                ...state,
+            }
+
         default:
             return state;
     }

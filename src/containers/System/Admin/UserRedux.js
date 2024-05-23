@@ -8,23 +8,14 @@ class UserRedux extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            genderArr: []
+            genderArr: [],
+            roleArr: [],
         };
     }
 
     async componentDidMount() {
         this.props.getGenderStart();
-        // try {
-        //     let res = await getAllCodeService('gender');
-        //     if (res && res.errCode === 0) {
-        //         this.setState({
-        //             genderArr: res.data
-        //         })
-        //     }
-        //     console.log('check res from', res);
-        // } catch (error) {
-        //     console.log(error);
-        // }
+        this.props.getRoleStart();
     }
 
     componentDidUpdate(prevProps, prevState, snapshot) {
@@ -33,17 +24,26 @@ class UserRedux extends Component {
                 genderArr: this.props.genderRedux
             })
         }
+        if (prevProps.roleRedux !== this.props.roleRedux) {
+            this.setState({
+                roleArr: this.props.roleRedux
+            })
+        }
     }
     render() {
         console.log('check state: ', this.state);
         let genders = this.state.genderArr;
-        console.log('check props from redux: ', this.props.genderRedux);
+        let roles = this.state.roleArr;
+        let isGetGenders = this.props.isLoadingGender;
+
+        console.log('check props from redux: ', this.state);
         return (
             <div>
                 <div className="user-redux-container" >
                     <div className='title'>
                         User Redux Nhat Nguyen Trong
                     </div>
+                    <div>{isGetGenders === true ? 'Loading genders': ''}</div>
                     <div className='user-redux-body'>
                         <div className='container'>
                             <div className='row'>
@@ -85,18 +85,21 @@ class UserRedux extends Component {
                                         }
                                     </select>
                                 </div>
-                                <div className='col-3'>
+                                {/* <div className='col-3'>
                                     <label>Position</label>
                                     <select className='form-control' >
                                         <option selected> Choose ...</option>
                                         <option>...</option>
                                     </select>
-                                </div>
+                                </div> */}
                                 <div className='col-3'>
                                     <label>RoleId</label>
                                     <select className='form-control' >
-                                        <option selected> Choose ...</option>
-                                        <option>...</option>
+                                        {roles && roles.length > 0 && roles.map((item, index) => {
+                                            return (<option key = {index}>
+                                                {item.value}
+                                            </option>);
+                                        })}
                                     </select>
                                 </div>
                                 <div className='col-12 mt-3'>
@@ -116,12 +119,15 @@ class UserRedux extends Component {
 const mapStateToProps = state => {
     return {
         genderRedux: state.admin.genders,
+        isLoadingGender: state.admin.isLoadingGender,
+        roleRedux: state.admin.roles,
     };
 };
 
 const mapDispatchToProps = dispatch => {
     return {
         getGenderStart: () => dispatch(actions.fetchGenderStart()),
+        getRoleStart: () => dispatch(actions.fetchRoleStart()),
         // processLogout: () => dispatch(actions.processLogout()),
 
     };
