@@ -4,7 +4,7 @@ import { connect } from 'react-redux';
 import { getAllCodeService } from '../../../services/userService';
 import * as actions from '../../../store/actions';
 import { first } from 'lodash';
-
+import TableManeaUser from './TableManageUser';
 class UserRedux extends Component {
     constructor(props) {
         super(props);
@@ -58,7 +58,7 @@ class UserRedux extends Component {
             lastName: this.state.lastName,
             phoneNumber: this.state.phoneNumber,
             address: this.state.address,
-            gender : this.state.gender,
+            gender: this.state.gender,
             role: this.state.role,
         });
 
@@ -177,6 +177,10 @@ class UserRedux extends Component {
                                     <button className='btn btn-primary' onClick={() => this.handleSaveUser()}>
                                         Save
                                     </button>
+                                </div>
+                                <div className='col-12'>
+                                    <TableManeaUser />
+
                                 </div>
                             </div>
                         </div>

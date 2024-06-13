@@ -28,6 +28,10 @@ const actionTypes = Object.freeze({
     //Create user
     CREATE_USER_SUCCESS: 'CREATE_USER_SUCCESS',
     CREATE_USER_FAILED: 'CREATE_USER_FAILED',
+
+    //
+    FETCH_ALL_USERS_SUCCESS: 'FETCH_ALL_USERS_SUCCESS',
+    FETCH_ALL_USERS_FAILED: 'FETCH_ALL_USERS_FAILED',
 })
 
 export default actionTypes;
