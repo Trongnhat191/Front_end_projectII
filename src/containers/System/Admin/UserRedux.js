@@ -44,6 +44,20 @@ class UserRedux extends Component {
                 role: arrRoles && arrRoles.length > 0 ? arrRoles[0].key : '',
             })
         }
+
+        if (prevProps.listUsers !== this.props.listUsers) {
+            this.setState({
+                email: '',
+                password: '',
+                firstName: '',
+                lastName: '',
+                phoneNumber: '',
+                address: '',
+                gender: '',
+                role: '',
+
+            })
+        }
     }
 
     handleSaveUser = () => {
@@ -61,7 +75,6 @@ class UserRedux extends Component {
             gender: this.state.gender,
             role: this.state.role,
         });
-
     }
 
     checkValidateInput = () => {
@@ -198,6 +211,8 @@ const mapStateToProps = state => {
         genderRedux: state.admin.genders,
         isLoadingGender: state.admin.isLoadingGender,
         roleRedux: state.admin.roles,
+        listUsers: state.admin.users,
+
     };
 };
 
@@ -206,6 +221,8 @@ const mapDispatchToProps = dispatch => {
         getGenderStart: () => dispatch(actions.fetchGenderStart()),
         getRoleStart: () => dispatch(actions.fetchRoleStart()),
         createNewUser: (data) => dispatch(actions.createNewUser(data)),
+        fetchUserRedux: () => dispatch(actions.fetchAllUsersStart()),
+
         // processLogout: () => dispatch(actions.processLogout()),
 
     };

@@ -13,12 +13,27 @@ class TableManageUser extends Component {
         }
     }
 
-     componentDidMount() {
+    componentDidMount() {
         this.props.fetchUserRedux();
     }
 
+    componentDidUpdate(prevProps, prevState, snapshot) {
+        if (prevProps.listUsers !== this.props.listUsers) {
+            this.setState({
+                usersRedux: this.props.listUsers
+            })
+        }
+    }
+
+    handleDeleteUser = (userId) => {
+        this.props.deleteAUserRedux(userId);
+    }
+
+
     render() {
         console.log('check all users', this.props.listUsers)
+        console.log('check state', this.state.usersRedux)
+        let arrUsers = this.state.usersRedux;
         return (
             <table id='TableManageUser'>
                 <tbody>
@@ -29,16 +44,23 @@ class TableManageUser extends Component {
                         <th>Address</th>
                         <th>Actions</th>
                     </tr>
-                    <tr>
-                        <td>{'item.email'}</td>
-                        <td>{'item.firstName'}</td>
-                        <td>{'item.lastName'}</td>
-                        <td>{'item.address'}</td>
-                        <td>
-                            <button className='btn-edit' ><i className="fas fa-pencil-alt"></i></button>
-                            <button className='btn-delete' ><i className="fas fa-trash"></i></button>
-                        </td>
-                    </tr>
+                    {arrUsers && arrUsers.length > 0 && arrUsers.map((item, index) => {
+                        return (<tr key={index}>
+                            <td>{item.email}</td>
+                            <td>{item.firstName}</td>
+                            <td>{item.lastName}</td>
+                            <td>{item.address}</td>
+                            <td>
+                                <button className='btn-edit' ><i className="fas fa-pencil-alt"></i></button>
+                                <button
+                                    onClick={() => this.handleDeleteUser(item.id)}
+                                    className='btn-delete' ><i className="fas fa-trash"></i></button>
+                            </td>
+                        </tr>)
+                    })
+                    }
+
+
                 </tbody>
             </table>
         );
@@ -55,6 +77,7 @@ const mapStateToProps = state => {
 const mapDispatchToProps = dispatch => {
     return {
         fetchUserRedux: () => dispatch(actions.fetchAllUsersStart()),
+        deleteAUserRedux: (userId) => dispatch(actions.deleteAUser(userId))
     };
 };
 
