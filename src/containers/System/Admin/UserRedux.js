@@ -101,7 +101,19 @@ class UserRedux extends Component {
         });
     }
 
+    handleEditUserFromParent = (user) => {
+        this.setState({
+            email: user.email,
+            password: 'hardcode',
+            firstName: user.firstName,
+            lastName: user.lastName,
+            phoneNumber: user.phonenumber,
+            address: user.address,
+            gender: user.gender,
+            role: user.roleId,
 
+        })
+    }
     render() {
         console.log('check state: ', this.state);
         let genders = this.state.genderArr;
@@ -164,6 +176,7 @@ class UserRedux extends Component {
                                     <select className='form-control'
                                         // value={email}
                                         onChange={(event) => { this.onChangeInput(event, 'gender') }}
+                                        value = {gender}
                                     >
                                         {genders && genders.length > 0 &&
                                             genders.map((item, index) => {
@@ -178,6 +191,7 @@ class UserRedux extends Component {
                                     <label>RoleId</label>
                                     <select className='form-control'
                                         onChange={(event) => { this.onChangeInput(event, 'role') }}
+                                        value = {role}
                                     >
                                         {roles && roles.length > 0 &&
                                             roles.map((item, index) => {
@@ -191,8 +205,10 @@ class UserRedux extends Component {
                                         Save
                                     </button>
                                 </div>
-                                <div className='col-12'>
-                                    <TableManeaUser />
+                                <div className='col-12 mb-5'>
+                                    <TableManeaUser 
+                                    handleEditUserFromParentKey={this.handleEditUserFromParent}
+                                    />
 
                                 </div>
                             </div>
