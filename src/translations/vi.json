@@ -49,6 +49,10 @@
             "manage-handbook": "Quản lý cẩm nang"
         }
     },
+    "manage-user":{
+        "save": "Luu user",
+        "edit": "Luu thay doi"
+    },
     "system": {
         "user-manage": {
             "fail-to-load-fouser": "Không thể tải về danh sách người dùng",

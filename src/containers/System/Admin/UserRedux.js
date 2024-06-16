@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { FormattedMessage } from 'react-intl';
 import { connect } from 'react-redux';
+import { CRUD_ACTIONS } from '../../../utils/constant';
 import { getAllCodeService } from '../../../services/userService';
 import * as actions from '../../../store/actions';
 import { first } from 'lodash';
@@ -21,6 +22,7 @@ class UserRedux extends Component {
             gender: '',
             role: '',
 
+            action: '',
         };
     }
 
@@ -55,7 +57,7 @@ class UserRedux extends Component {
                 address: '',
                 gender: '',
                 role: '',
-
+                actions: CRUD_ACTIONS.CREATE,
             })
         }
     }
@@ -64,6 +66,7 @@ class UserRedux extends Component {
         let isValid = this.checkValidateInput();
         if (isValid === false) return;
 
+        let {action}
         //fire action redux
         this.props.createNewUser({
             email: this.state.email,
@@ -112,6 +115,7 @@ class UserRedux extends Component {
             gender: user.gender,
             role: user.roleId,
 
+            action: CRUD_ACTIONS.EDIT,
         })
     }
     render() {
@@ -176,7 +180,7 @@ class UserRedux extends Component {
                                     <select className='form-control'
                                         // value={email}
                                         onChange={(event) => { this.onChangeInput(event, 'gender') }}
-                                        value = {gender}
+                                        value={gender}
                                     >
                                         {genders && genders.length > 0 &&
                                             genders.map((item, index) => {
@@ -191,7 +195,7 @@ class UserRedux extends Component {
                                     <label>RoleId</label>
                                     <select className='form-control'
                                         onChange={(event) => { this.onChangeInput(event, 'role') }}
-                                        value = {role}
+                                        value={role}
                                     >
                                         {roles && roles.length > 0 &&
                                             roles.map((item, index) => {
@@ -201,13 +205,19 @@ class UserRedux extends Component {
                                     </select>
                                 </div>
                                 <div className='col-12 mt-3'>
-                                    <button className='btn btn-primary' onClick={() => this.handleSaveUser()}>
-                                        Save
+                                    <button className={this.state.action === CRUD_ACTIONS.EDIT ? 'btn btn-warning' : 'btn btn-primary'}
+                                        onClick={() => this.handleSaveUser()}>
+                                        {this.state.action === CRUD_ACTIONS.EDIT ?
+                                            <FormattedMessage id="manage-user.edit" />
+                                            :
+                                            <FormattedMessage id="manage-user.save" />
+                                        }
                                     </button>
                                 </div>
                                 <div className='col-12 mb-5'>
-                                    <TableManeaUser 
-                                    handleEditUserFromParentKey={this.handleEditUserFromParent}
+                                    <TableManeaUser
+                                        handleEditUserFromParentKey={this.handleEditUserFromParent}
+                                        action={this.state.action}
                                     />
 
                                 </div>
