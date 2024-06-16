@@ -66,7 +66,7 @@ class UserRedux extends Component {
         let isValid = this.checkValidateInput();
         if (isValid === false) return;
 
-        let {action}
+        // let {action}
         //fire action redux
         this.props.createNewUser({
             email: this.state.email,
